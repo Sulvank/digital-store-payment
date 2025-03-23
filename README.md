@@ -53,4 +53,63 @@ En esta versión simplificada se eliminó la lógica duplicada y se dejó una ú
 ## **⚙️ Prerequisites**
 
 ### **🛠️ Tools Required:**
-- **🖥️ Remix IDE**: Para desplegar y
+- **🖥️ Remix IDE**: Para desplegar y probar el contrato ([Remix IDE](https://remix.ethereum.org)).
+- **Metamask Wallet**: Para pruebas en testnet, si se desea.
+
+### **🌐 Environment:**
+- Solidity Compiler Version: `0.8.28`.
+- Red recomendada: JavaScript VM (Remix) o Testnet como Goerli.
+
+> [!TIP]  
+> Asegúrate de usar exactamente `0.01 ether` como `value` al llamar a `buyProduct()`.
+
+---
+
+## **🚀 How to Use the Contract**
+
+### **1️⃣ Desplegar el Contrato**
+
+1. Abre [Remix IDE](https://remix.ethereum.org).
+2. Crea un archivo llamado `DigitalStore.sol` y pega el código del contrato.
+3. Selecciona la versión de compilador `0.8.28`.
+4. Compila el contrato.
+5. Despliega el contrato desde una cuenta (esa cuenta será el `owner`).
+
+### **2️⃣ Comprar el Producto**
+
+- Cambia de cuenta en Remix (diferente a la del owner).
+- En el campo `VALUE`, escribe exactamente `0.01` y selecciona `ether`.
+- Llama a `buyProduct()`.
+- Verifica que se registre tu compra con `hasPurchased(address)` o `getBuyers()`.
+
+### **3️⃣ Retirar los Fondos**
+
+- Vuelve a la cuenta `owner`.
+- Llama a `withdraw(address payable to)` y pasa tu dirección para recibir el Ether.
+- Verifica que el balance del contrato quede en 0 llamando a `getBalance()`.
+
+> [!WARNING]  
+> Si otro usuario intenta llamar a `withdraw()`, la transacción fallará.
+
+---
+
+## **🛠️ Extending the Contract**
+
+### **🔍 Posibles Mejoras Futuras**
+- **🔐 Acceso a contenido privado solo si has comprado.**
+- **🧾 Emisión de NFT como comprobante de compra.**
+- **📦 Sistema con múltiples productos con precios diferentes.**
+- **💬 Comentarios o valoraciones por parte de los compradores.**
+
+> [!CAUTION]  
+> Siempre prueba cualquier mejora en testnet y revisa la seguridad antes de ir a producción.
+
+---
+
+## **📜 License**
+
+Este proyecto está licenciado bajo la licencia MIT.
+
+---
+
+### 🚀 **DigitalStore es un ejemplo claro y limpio para aprender a manejar Ether de forma profesional en Solidity.**
